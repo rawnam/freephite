@@ -1,10 +1,10 @@
 {
-  "name": "@bradymadden97/freephite-cli",
-  "version": "0.1.6",
+  "name": "@rawnam/freephite-cli",
+  "version": "0.1.7",
   "license": "None",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
-  "repository": "https://github.com/bradymadden97/freephite/tree/main/apps/cli",
+  "repository": "https://github.com/rawnam/freephite/tree/main/apps/cli",
   "packageManager": "npm@10.7.0",
   "dependencies": {
     "@octokit/core": "^5.0.0",

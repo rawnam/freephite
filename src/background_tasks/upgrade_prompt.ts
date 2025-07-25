@@ -32,7 +32,7 @@ async function fetchUpgradePrompt(
   }
   try {
     const response = await fetch(
-      'https://registry.npmjs.org/@bradymadden97/freephite-cli'
+      'https://registry.npmjs.org/@rawnam/freephite-cli'
     ).then((r) => r.json());
     const latest = response['dist-tags']['latest'];
 
@@ -40,7 +40,7 @@ async function fetchUpgradePrompt(
       messageConfig.update(
         (data) =>
           (data.message = {
-            contents: `Current freephite version ${version} < ${latest}. To update:\nhttps://www.npmjs.com/package/@bradymadden97/freephite-cli`,
+            contents: `Current freephite version ${version} < ${latest}. To update:\nhttps://www.npmjs.com/package/@rawnam/freephite-cli`,
             cliVersion: version,
           })
       );
