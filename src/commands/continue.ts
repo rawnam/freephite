@@ -1,6 +1,6 @@
 import yargs from 'yargs';
 import { continueAction } from '../actions/continue';
-import { graphite } from '../lib/runner';
+import { freephite } from '../lib/runner';
 
 const args = {
   all: {
@@ -18,10 +18,10 @@ export const command = 'continue';
 export const canonical = 'continue';
 export const aliases = ['cont'];
 export const description =
-  'Continues the most recent Graphite command halted by a merge conflict.';
+  'Continues the most recent Freephite command halted by a merge conflict.';
 export const builder = args;
 export const handler = async (argv: argsT): Promise<void> =>
-  graphite(
+  freephite(
     argv,
     canonical,
     async (context) => await continueAction({ addAll: argv.all }, context)

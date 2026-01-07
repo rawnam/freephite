@@ -30,7 +30,7 @@ export class PreconditionsFailedError extends Error {
 
 export class ConcurrentExecutionError extends Error {
   constructor() {
-    super(`Cannot run more than one Graphite process at once.`);
+    super(`Cannot run more than one Freephite process at once.`);
     this.name = 'ConcurrentExecutionError';
   }
 }
@@ -75,7 +75,7 @@ export class BadTrunkOperationError extends Error {
 
 export class KilledError extends Error {
   constructor() {
-    super(`Killed Graphite early.`);
+    super(`Killed Freephite early.`);
     this.name = 'Killed';
   }
 }
@@ -94,14 +94,14 @@ export class BlockedDuringRebaseError extends Error {
   }
 }
 
-export class NoGraphiteContinue extends Error {
+export class NoFreephiteContinue extends Error {
   constructor(didYouMean?: string) {
-    const baseMsg = `No Graphite operation to continue.`;
+    const baseMsg = `No Freephite operation to continue.`;
     super(
       didYouMean
         ? [baseMsg, `Did you mean ${chalk.cyan(didYouMean)}?`].join('\n')
         : baseMsg
     );
-    this.name = 'NoGraphiteContinue';
+    this.name = 'NoFreephiteContinue';
   }
 }

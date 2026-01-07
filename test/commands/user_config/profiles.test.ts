@@ -39,8 +39,8 @@ describe('userConfigFactory', () => {
         ],
       },
       results: {
-        apiServer: 'https://api.prod.graphite.dev/v1',
-        appServer: 'https://app.prod.graphite.dev',
+        apiServer: 'https://api.prod.freephite.dev/v1',
+        appServer: 'https://app.prod.freephite.dev',
         authToken: '123',
       },
     },
@@ -51,14 +51,14 @@ describe('userConfigFactory', () => {
         authToken: '123',
       },
       results: {
-        apiServer: 'https://api.graphite.dev/v1',
-        appServer: 'https://app.graphite.dev',
+        apiServer: 'https://api.freephite.dev/v1',
+        appServer: 'https://app.freephite.dev',
         authToken: '123',
       },
     },
     {
       // Case testing a staging profile.
-      envVars: { GRAPHITE_PROFILE: 'STAGING' },
+      envVars: { FREEPHITE_PROFILE: 'STAGING' },
       profile: {
         alternativeProfiles: [
           {
@@ -69,8 +69,8 @@ describe('userConfigFactory', () => {
         ],
       },
       results: {
-        apiServer: 'https://api.stg.graphite.dev/v1',
-        appServer: 'https://app.stg.graphite.dev',
+        apiServer: 'https://api.stg.freephite.dev/v1',
+        appServer: 'https://app.stg.freephite.dev',
         authToken: '234',
       },
     },

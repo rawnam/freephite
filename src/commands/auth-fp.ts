@@ -1,6 +1,6 @@
 import chalk from 'chalk';
 import yargs from 'yargs';
-import { graphiteWithoutRepo } from '../lib/runner';
+import { freephiteWithoutRepo } from '../lib/runner';
 
 const args = {
   token: {
@@ -18,7 +18,7 @@ export const builder = args;
 export const canonical = 'auth-fp';
 
 export const handler = async (argv: argsT): Promise<void> => {
-  return graphiteWithoutRepo(argv, canonical, async (context) => {
+  return freephiteWithoutRepo(argv, canonical, async (context) => {
     if (argv.token) {
       context.userConfig.update((data) => (data.fpAuthToken = argv.token));
       context.splog.info(

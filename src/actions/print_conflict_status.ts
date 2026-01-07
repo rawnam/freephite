@@ -29,7 +29,7 @@ export function printConflictStatus(
   }
 
   context.splog.info(
-    chalk.yellow(`To fix and continue your previous Graphite command:`)
+    chalk.yellow(`To fix and continue your previous Freephite command:`)
   );
   context.splog.info(`(1) resolve the listed merge conflicts`);
   context.splog.info(
@@ -38,7 +38,7 @@ export function printConflictStatus(
   context.splog.info(
     `(3) run ${chalk.cyan(
       `fp continue`
-    )} to continue executing your previous Graphite command`
+    )} to continue executing your previous Freephite command`
   );
   context.splog.info(
     "It's safe to cancel the ongoing rebase with `fp rebase --abort`."

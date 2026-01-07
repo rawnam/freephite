@@ -1,5 +1,5 @@
 import yargs from 'yargs';
-import { graphite } from '../../lib/runner';
+import { freephite } from '../../lib/runner';
 import { checkoutBranch } from '../../actions/checkout_branch';
 
 const args = {} as const;
@@ -12,7 +12,7 @@ export const description = 'Switch the to repo trunk branch.';
 export const aliases = ['t'];
 export const builder = args;
 export const handler = async (argv: argsT): Promise<void> => {
-  return graphite(argv, canonical, async (context) => {
+  return freephite(argv, canonical, async (context) => {
     const trunk = context.repoConfig.getTrunk();
 
     if (!trunk) {

@@ -44,17 +44,17 @@ export type TProfile = Required<
 
 export type TApiServerUrl = string;
 export type TAppServerUrl = string;
-export const DEFAULT_GRAPHITE_API_SERVER: TApiServerUrl =
-  'https://api.graphite.dev/v1';
+export const DEFAULT_FREEPHITE_API_SERVER: TApiServerUrl =
+  'https://api.freephite.dev/v1';
 
-export const DEFAULT_GRAPHITE_APP_SERVER: TAppServerUrl =
-  'https://app.graphite.dev';
+export const DEFAULT_FREEPHITE_APP_SERVER: TAppServerUrl =
+  'https://app.freephite.dev';
 
 export const userConfigFactory = spiffy({
   schema,
   defaultLocations: [
     {
-      relativePath: '.graphite_user_config',
+      relativePath: '.freephite_user_config',
       relativeTo: 'USER_HOME',
     },
   ],
@@ -66,14 +66,14 @@ export const userConfigFactory = spiffy({
     // If none specified, default to empty string.
     const getDefaultProfile = (): TProfile => {
       const alternativeProfiles = data.alternativeProfiles ?? [];
-      if (process.env.GRAPHITE_PROFILE) {
+      if (process.env.FREEPHITE_PROFILE) {
         const alternativeProfile = alternativeProfiles.find(
-          (p) => p.name === process.env.GRAPHITE_PROFILE
+          (p) => p.name === process.env.FREEPHITE_PROFILE
         );
         if (alternativeProfile) {
           return alternativeProfile;
         } else {
-          throw new Error(`Unknown profile ${process.env.GRAPHITE_PROFILE}`);
+          throw new Error(`Unknown profile ${process.env.FREEPHITE_PROFILE}`);
         }
       }
       const optionalDefaultProfile = alternativeProfiles.find(
@@ -98,15 +98,15 @@ export const userConfigFactory = spiffy({
       }
       const hostPrefix = getDefaultProfile().hostPrefix;
       return hostPrefix
-        ? `https://api.${hostPrefix}.graphite.dev/v1`
-        : DEFAULT_GRAPHITE_API_SERVER;
+        ? `https://api.${hostPrefix}.freephite.dev/v1`
+        : DEFAULT_FREEPHITE_API_SERVER;
     };
 
     const getAppServerUrl = (): TAppServerUrl => {
       const hostPrefix = getDefaultProfile().hostPrefix;
       return hostPrefix
-        ? `https://app.${hostPrefix}.graphite.dev`
-        : DEFAULT_GRAPHITE_APP_SERVER;
+        ? `https://app.${hostPrefix}.freephite.dev`
+        : DEFAULT_FREEPHITE_APP_SERVER;
     };
 
     const getAuthToken = (): string | undefined => {

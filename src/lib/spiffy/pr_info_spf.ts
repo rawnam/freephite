@@ -27,7 +27,7 @@ export const prInfoConfigFactory = spiffy({
   }),
   defaultLocations: [
     {
-      relativePath: '.graphite_pr_info',
+      relativePath: '.freephite_pr_info',
       relativeTo: 'REPO',
     },
   ],

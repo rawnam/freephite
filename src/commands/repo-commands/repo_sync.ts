@@ -1,6 +1,6 @@
 import yargs from 'yargs';
 import { syncAction } from '../../actions/sync/sync';
-import { graphite } from '../../lib/runner';
+import { freephite } from '../../lib/runner';
 
 const args = {
   pull: {
@@ -47,7 +47,7 @@ export const description =
   'Pull the trunk branch from remote and delete any branches that have been merged. If trunk cannot be fast-forwarded to match remote, overwrites trunk with the remote version.';
 export const builder = args;
 export const handler = async (argv: argsT): Promise<void> => {
-  return graphite(argv, canonical, async (context) => {
+  return freephite(argv, canonical, async (context) => {
     await syncAction(
       {
         pull: argv.pull,

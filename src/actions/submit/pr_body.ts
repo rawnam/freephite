@@ -72,26 +72,26 @@ export async function editPRBody(
   // which would create red/error highlights if the first line went over 50
   // characters. This was frustrating for users:
   //
-  //   https://graphite-community.slack.com/archives/C02DRNRA9RA/p1683676287959569
+  //   https://freephite-community.slack.com/archives/C02DRNRA9RA/p1683676287959569
   //   Also, see GT-8562 in Linear.
   //
   // Because we're _really_ editing a Markdown PR description, we should give it
   // a `.md` extension so every editor can do the smart thing and syntax
   // highlight it as Markdown.
   //
-  // We're calling it `GRAPHITE_PR_DESCRIPTION.md` so that users can also
+  // We're calling it `FREEPHITE_PR_DESCRIPTION.md` so that users can also
   // configure their `EDITOR` to do custom things.
   //
   // For example, if someone wanted the previous behavior of treating it as a
   // Git commit message, they could add the following snippet to their Vim
   // config:
   //
-  //   autocmd BufNewFile,BufRead GRAPHITE_PR_DESCRIPTION.md set ft=gitcommit
+  //   autocmd BufNewFile,BufRead FREEPHITE_PR_DESCRIPTION.md set ft=gitcommit
   //
   const dir = tmp.dirSync();
   const file = tmp.fileSync({
     dir: dir.name,
-    name: 'GRAPHITE_PR_DESCRIPTION.md',
+    name: 'FREEPHITE_PR_DESCRIPTION.md',
   });
   fs.writeFileSync(file.name, initial);
 

@@ -6,7 +6,7 @@ import {
   readMetadataRef,
   writeMetadataRef,
 } from '../../lib/engine/metadata_ref';
-import { graphite } from '../../lib/runner';
+import { freephite } from '../../lib/runner';
 import { cuteString } from '../../lib/utils/cute_string';
 
 const args = {
@@ -31,7 +31,7 @@ export const builder = args;
 // This command allows for direct access to the metadata ref. USE WITH CARE!
 type argsT = yargs.Arguments<yargs.InferredOptionTypes<typeof args>>;
 export const handler = async (argv: argsT): Promise<void> => {
-  return graphite(argv, canonical, async (context) => {
+  return freephite(argv, canonical, async (context) => {
     const metaString = cuteString(readMetadataRef(argv.branch));
     if (!argv.edit) {
       context.splog.info(metaString);

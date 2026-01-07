@@ -1,6 +1,6 @@
 import yargs from 'yargs';
 import { init } from '../../actions/init';
-import { graphite } from '../../lib/runner';
+import { freephite } from '../../lib/runner';
 
 const args = {
   trunk: {
@@ -22,10 +22,10 @@ export const command = 'init';
 export const aliases = ['i'];
 export const canonical = 'repo init';
 export const description =
-  'Create or regenerate a `.graphite_repo_config` file.';
+  'Create or regenerate a `.freephite_repo_config` file.';
 export const builder = args;
 export const handler = async (argv: argsT): Promise<void> =>
-  graphite(
+  freephite(
     argv,
     canonical,
     async (context) =>

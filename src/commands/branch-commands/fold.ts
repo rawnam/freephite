@@ -1,6 +1,6 @@
 import yargs from 'yargs';
 import { foldCurrentBranch } from '../../actions/fold_branch';
-import { graphite } from '../../lib/runner';
+import { freephite } from '../../lib/runner';
 
 const args = {
   keep: {
@@ -20,6 +20,6 @@ export const description =
   "Fold a branch's changes into its parent, update dependencies of descendants of the new combined branch, and restack.";
 export const builder = args;
 export const handler = async (argv: argsT): Promise<void> =>
-  graphite(argv, canonical, async (context) =>
+  freephite(argv, canonical, async (context) =>
     foldCurrentBranch(argv.keep, context)
   );

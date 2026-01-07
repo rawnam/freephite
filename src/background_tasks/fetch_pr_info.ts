@@ -10,7 +10,7 @@ import { TUserConfig, userConfigFactory } from '../lib/spiffy/user_config_spf';
 import { spawnDetached } from '../lib/utils/spawn';
 
 export function refreshPRInfoInBackground(context: TContext): void {
-  if (!context.repoConfig.graphiteInitialized()) {
+  if (!context.repoConfig.freephiteInitialized()) {
     return;
   }
 

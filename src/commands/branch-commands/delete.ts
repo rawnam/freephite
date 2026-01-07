@@ -1,6 +1,6 @@
 import yargs from 'yargs';
 import { deleteBranchAction } from '../../actions/delete_branch';
-import { graphite } from '../../lib/runner';
+import { freephite } from '../../lib/runner';
 
 const args = {
   name: {
@@ -25,9 +25,9 @@ export const aliases = ['dl'];
 export const command = 'delete [name]';
 export const canonical = 'branch delete';
 export const description =
-  'Delete a branch and its corresponding Graphite metadata.';
+  'Delete a branch and its corresponding Freephite metadata.';
 export const builder = args;
 export const handler = async (argv: argsT): Promise<void> =>
-  graphite(argv, canonical, async (context) =>
+  freephite(argv, canonical, async (context) =>
     deleteBranchAction({ branchName: argv.name, force: argv.force }, context)
   );

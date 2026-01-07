@@ -1,6 +1,6 @@
 import yargs from 'yargs';
 import { restackBranches } from '../../actions/restack';
-import { graphite } from '../../lib/runner';
+import { freephite } from '../../lib/runner';
 
 const args = {} as const;
 type argsT = yargs.Arguments<yargs.InferredOptionTypes<typeof args>>;
@@ -12,7 +12,7 @@ export const description =
   'Ensure the current branch is based on its parent, rebasing if necessary.';
 export const builder = args;
 export const handler = async (argv: argsT): Promise<void> =>
-  graphite(argv, canonical, async (context) => {
+  freephite(argv, canonical, async (context) => {
     context.splog.tip(
       [
         `You are restacking a specific branch.`,

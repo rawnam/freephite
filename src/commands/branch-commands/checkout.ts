@@ -1,6 +1,6 @@
 import yargs from 'yargs';
 import { checkoutBranch } from '../../actions/checkout_branch';
-import { graphite } from '../../lib/runner';
+import { freephite } from '../../lib/runner';
 
 const args = {
   branch: {
@@ -28,7 +28,7 @@ export const aliases = ['co'];
 export const builder = args;
 
 export const handler = async (argv: argsT): Promise<void> =>
-  graphite(argv, canonical, async (context) =>
+  freephite(argv, canonical, async (context) =>
     checkoutBranch(
       { branchName: argv.branch, showUntracked: argv['show-untracked'] },
       context

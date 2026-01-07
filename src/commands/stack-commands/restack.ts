@@ -1,7 +1,7 @@
 import yargs from 'yargs';
 import { restackBranches } from '../../actions/restack';
 import { SCOPE } from '../../lib/engine/scope_spec';
-import { graphite } from '../../lib/runner';
+import { freephite } from '../../lib/runner';
 
 const args = {
   branch: {
@@ -18,7 +18,7 @@ export const description =
   'Ensure each branch in the current stack is based on its parent, rebasing if necessary.';
 export const builder = args;
 export const handler = async (argv: argsT): Promise<void> =>
-  graphite(argv, canonical, async (context) => {
+  freephite(argv, canonical, async (context) => {
     return restackBranches(
       context.engine.getRelativeStack(
         argv.branch ?? context.engine.currentBranchPrecondition,

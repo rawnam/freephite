@@ -1,6 +1,6 @@
 import yargs from 'yargs';
 import { trackBranch } from '../../actions/track_branch';
-import { graphite } from '../../lib/runner';
+import { freephite } from '../../lib/runner';
 
 const args = {
   branch: {
@@ -31,12 +31,12 @@ export const command = 'track [branch]';
 export const canonical = 'branch track';
 export const aliases = ['tr'];
 export const description = [
-  'Start tracking the current (or provided) branch with Graphite by selecting its parent.',
-  'This command can also be used to fix corrupted Graphite metadata.',
+  'Start tracking the current (or provided) branch with Freephite by selecting its parent.',
+  'This command can also be used to fix corrupted Freephite metadata.',
 ].join(' ');
 export const builder = args;
 export const handler = async (argv: argsT): Promise<void> =>
-  graphite(
+  freephite(
     argv,
     canonical,
     async (context) =>

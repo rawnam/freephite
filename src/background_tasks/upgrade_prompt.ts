@@ -9,11 +9,11 @@ import semver from 'semver';
 
 function printAndClearOldMessage(context: TContextLite): void {
   const oldMessage = context.messageConfig.data.message;
-  // "Since we fetch the message asynchronously and display it when the user runs their next Graphite command,
+  // "Since we fetch the message asynchronously and display it when the user runs their next Freephite command,
   // double-check before showing the message if the CLI is still an old version
   // (i.e. the user hasn't updated the CLI in the meantime)."
   if (oldMessage && version == oldMessage.cliVersion) {
-    if (!process.env.GRAPHITE_INTERACTIVE) {
+    if (!process.env.FREEPHITE_INTERACTIVE) {
       context.splog.message(oldMessage.contents);
     }
     context.messageConfig.update((data) => (data.message = undefined));
@@ -27,7 +27,7 @@ export function fetchUpgradePromptInBackground(context: TContextLite): void {
 async function fetchUpgradePrompt(
   messageConfig: TMessageConfig
 ): Promise<void> {
-  if (process.env.GRAPHITE_DISABLE_UPGRADE_PROMPT) {
+  if (process.env.FREEPHITE_DISABLE_UPGRADE_PROMPT) {
     return;
   }
   try {

@@ -1,6 +1,6 @@
 import chalk from 'chalk';
 import yargs from 'yargs';
-import { graphiteWithoutRepo } from '../../lib/runner';
+import { freephiteWithoutRepo } from '../../lib/runner';
 import { setBranchPrefix } from '../../lib/utils/branch_name';
 
 const args = {
@@ -25,10 +25,10 @@ type argsT = yargs.Arguments<yargs.InferredOptionTypes<typeof args>>;
 export const command = 'branch-prefix';
 export const canonical = 'user branch-prefix';
 export const description =
-  'The prefix which Graphite will prepend to generated branch names.';
+  'The prefix which Freephite will prepend to generated branch names.';
 export const builder = args;
 export const handler = async (argv: argsT): Promise<void> => {
-  return graphiteWithoutRepo(argv, canonical, async (context) => {
+  return freephiteWithoutRepo(argv, canonical, async (context) => {
     if (argv.reset) {
       context.splog.info(`Reset branch-prefix`);
       setBranchPrefix('', context);

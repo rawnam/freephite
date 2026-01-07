@@ -8,7 +8,7 @@ export const cacheLockConfigFactory = spiffy({
   }),
   defaultLocations: [
     {
-      relativePath: '.graphite_cache_lock',
+      relativePath: '.freephite_cache_lock',
       relativeTo: 'REPO',
     },
   ],

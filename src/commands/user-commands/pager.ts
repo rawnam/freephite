@@ -1,34 +1,34 @@
 import chalk from 'chalk';
 import yargs from 'yargs';
-import { graphiteWithoutRepo } from '../../lib/runner';
+import { freephiteWithoutRepo } from '../../lib/runner';
 
 const args = {
   set: {
     demandOption: false,
     type: 'string',
-    describe: 'Set default pager for Graphite. e.g. --set "less -FRX".',
+    describe: 'Set default pager for Freephite. e.g. --set "less -FRX".',
   },
   disable: {
     demandOption: false,
     default: false,
     type: 'boolean',
-    describe: 'Disable pager for Graphite',
+    describe: 'Disable pager for Freephite',
   },
   unset: {
     demandOption: false,
     default: false,
     type: 'boolean',
-    describe: 'Unset default pager for Graphite and default to git pager.',
+    describe: 'Unset default pager for Freephite and default to git pager.',
   },
 } as const;
 
 type argsT = yargs.Arguments<yargs.InferredOptionTypes<typeof args>>;
 export const command = 'pager';
-export const description = 'The pager opened by Graphite.';
+export const description = 'The pager opened by Freephite.';
 export const canonical = 'user pager';
 export const builder = args;
 export const handler = async (argv: argsT): Promise<void> => {
-  return graphiteWithoutRepo(argv, canonical, async (context) => {
+  return freephiteWithoutRepo(argv, canonical, async (context) => {
     if (argv.disable) {
       context.userConfig.update((data) => (data.pager = ''));
       context.splog.info(`Pager disabled`);
@@ -50,7 +50,7 @@ export const handler = async (argv: argsT): Promise<void> => {
         : context.userConfig.data.pager
         ? context.splog.info(chalk.cyan(context.userConfig.data.pager))
         : context.splog.info(
-            `Pager is not set. Graphite will use your git pager (currently ${chalk.cyan(
+            `Pager is not set. Freephite will use your git pager (currently ${chalk.cyan(
               currentPager
             )})`
           );

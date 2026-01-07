@@ -124,7 +124,7 @@ function logState(state: TTestState, refresh: boolean, context: TContext) {
       : undefined;
     process.stdout.clearLine(0);
     // Example:
-    // - [success]: tr--Track_CLI_and_Graphite_user_assoicat (00:00:22)
+    // - [success]: tr--Track_CLI_and_Freephite_user_assoicat (00:00:22)
     context.splog.info(
       `- ${color(state[branchName].status)}: ${branchName}${
         duration ? ` (${durationString})` : ''

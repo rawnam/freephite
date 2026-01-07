@@ -1,6 +1,6 @@
 import tmp from 'tmp';
 import yargs from 'yargs';
-import { graphiteWithoutRepo } from '../lib/runner';
+import { freephiteWithoutRepo } from '../lib/runner';
 import { GitRepo } from '../lib/utils/git_repo';
 import { makeId } from '../lib/utils/make_id';
 
@@ -13,7 +13,7 @@ export const builder = args;
 
 type argsT = yargs.Arguments<yargs.InferredOptionTypes<typeof args>>;
 export const handler = async (argv: argsT): Promise<void> => {
-  return graphiteWithoutRepo(argv, canonical, async (context) => {
+  return freephiteWithoutRepo(argv, canonical, async (context) => {
     const tmpDir = tmp.dirSync();
     context.splog.info(tmpDir.name);
     const repo = new GitRepo(tmpDir.name);
@@ -79,7 +79,7 @@ export const handler = async (argv: argsT): Promise<void> => {
       'remote',
       'add',
       'origin',
-      'git@github.com:withgraphite/graphite-demo-repo.git',
+      'git@github.com:withfreephite/freephite-demo-repo.git',
     ]);
 
     repo.runGitCommand(['push', 'origin', 'main', '-f']);

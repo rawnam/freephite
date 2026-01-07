@@ -1,6 +1,6 @@
 import { submitAction } from '../../actions/submit/submit_action';
 import { SCOPE } from '../../lib/engine/scope_spec';
-import { graphite } from '../../lib/runner';
+import { freephite } from '../../lib/runner';
 import { argsT } from '../shared-commands/submit';
 
 export { aliases, args, builder, command } from '../shared-commands/submit';
@@ -9,7 +9,7 @@ export const description =
 export const canonical = 'upstack submit';
 
 export const handler = async (argv: argsT): Promise<void> => {
-  await graphite(argv, canonical, async (context) => {
+  await freephite(argv, canonical, async (context) => {
     context.splog.tip(
       [
         `You are submitting with upstack scope.`,

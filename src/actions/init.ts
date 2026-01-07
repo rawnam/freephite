@@ -15,17 +15,17 @@ export async function init(
   const allBranchNames = context.engine.allBranchNames;
 
   context.splog.info(
-    context.repoConfig.graphiteInitialized()
-      ? `Reinitializing Graphite...`
-      : `Welcome to Graphite!`
+    context.repoConfig.freephiteInitialized()
+      ? `Reinitializing Freephite...`
+      : `Welcome to Freephite!`
   );
   context.splog.newline();
 
   if (allBranchNames.length === 0) {
     throw new PreconditionsFailedError(
       [
-        `No branches found in current repo; cannot initialize Graphite.`,
-        `Please create your first commit and then re-run your Graphite command.`,
+        `No branches found in current repo; cannot initialize Freephite.`,
+        `Please create your first commit and then re-run your Freephite command.`,
       ].join('\n')
     );
   }
@@ -96,9 +96,9 @@ function findCommonlyNamedTrunk(context: TContext): string | undefined {
 async function branchOnboardingFlow(context: TContext) {
   context.splog.tip(
     [
-      "If you have an existing branch or stack that you'd like to start working on with Graphite, you can begin tracking it now!",
-      'To add other non-Graphite branches to Graphite later, check out `fp branch track`.',
-      'If you only want to use Graphite for new branches, feel free to exit now and use `fp branch create`.',
+      "If you have an existing branch or stack that you'd like to start working on with Freephite, you can begin tracking it now!",
+      'To add other non-Freephite branches to Freephite later, check out `fp branch track`.',
+      'If you only want to use Freephite for new branches, feel free to exit now and use `fp branch create`.',
     ].join('\n')
   );
   if (

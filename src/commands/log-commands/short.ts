@@ -1,7 +1,7 @@
 import yargs from 'yargs';
 import { logAction } from '../../actions/log';
 import { logShortClassic } from '../../actions/log_short_classic';
-import { graphite } from '../../lib/runner';
+import { freephite } from '../../lib/runner';
 
 const args = {
   classic: {
@@ -40,14 +40,14 @@ const args = {
 
 export const command = 'short';
 export const description =
-  'Log all stacks tracked by Graphite, arranged to show dependencies.';
+  'Log all stacks tracked by Freephite, arranged to show dependencies.';
 export const builder = args;
 export const aliases = ['s'];
 export const canonical = 'log short';
 
 type argsT = yargs.Arguments<yargs.InferredOptionTypes<typeof args>>;
 export const handler = async (argv: argsT): Promise<void> =>
-  graphite(argv, canonical, async (context) =>
+  freephite(argv, canonical, async (context) =>
     argv.classic
       ? logShortClassic(context)
       : logAction(
