@@ -29,13 +29,13 @@ export abstract class AbstractScene {
     this.dir = this.tmpDir.name;
     this.repo = new GitRepo(this.dir);
     fs.writeFileSync(
-      `${this.dir}/.git/.graphite_repo_config`,
+      `${this.dir}/.git/.freephite_repo_config`,
       cuteString({ trunk: 'main' })
     );
-    const userConfigPath = `${this.dir}/.git/.graphite_user_config`;
+    const userConfigPath = `${this.dir}/.git/.freephite_user_config`;
     fs.writeFileSync(userConfigPath, cuteString({ tips: false }));
-    process.env.GRAPHITE_USER_CONFIG_PATH = userConfigPath;
-    process.env.GRAPHITE_PROFILE = '';
+    process.env.FREEPHITE_USER_CONFIG_PATH = userConfigPath;
+    process.env.FREEPHITE_PROFILE = '';
     this.oldDir = process.cwd();
     process.chdir(this.dir);
   }

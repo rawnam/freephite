@@ -1,6 +1,6 @@
 import yargs from 'yargs';
 import { squashCurrentBranch } from '../../actions/squash';
-import { graphite } from '../../lib/runner';
+import { freephite } from '../../lib/runner';
 
 const args = {
   message: {
@@ -33,7 +33,7 @@ export const description =
   'Squash all commits in the current branch and restack upstack branches.';
 export const builder = args;
 export const handler = async (argv: argsT): Promise<void> =>
-  graphite(argv, canonical, async (context) =>
+  freephite(argv, canonical, async (context) =>
     squashCurrentBranch(
       {
         message: argv.message,

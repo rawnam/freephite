@@ -26,7 +26,7 @@ export class PublicRepoScene extends AbstractScene {
     this.repo = new GitRepo(this.dir, { repoUrl: this.repoUrl });
     execSync(`git -C ${this.dir} fetch --all`);
     fs.writeFileSync(
-      `${this.dir}/.git/.graphite_repo_config`,
+      `${this.dir}/.git/.freephite_repo_config`,
       cuteString({ trunk: 'master' })
     );
     process.chdir(this.dir);

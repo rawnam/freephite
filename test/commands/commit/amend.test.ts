@@ -61,7 +61,7 @@ for (const scene of allScenes) {
       scene.repo.checkoutBranch('b');
 
       // Notably, the old commit that became a1 should *not* be in this list;
-      // Graphite should have associated that a became a1 and made sure that
+      // Freephite should have associated that a became a1 and made sure that
       // as we upstacked branch 'b' that commit 'a' was dropped.
       expectCommits(scene.repo, 'b, a1, 1');
     });

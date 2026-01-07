@@ -1,5 +1,5 @@
 import yargs from 'yargs';
-import { graphite } from '../../lib/runner';
+import { freephite } from '../../lib/runner';
 
 const args = {} as const;
 
@@ -12,4 +12,4 @@ export const canonical = 'log long';
 
 type argsT = yargs.Arguments<yargs.InferredOptionTypes<typeof args>>;
 export const handler = async (argv: argsT): Promise<void> =>
-  graphite(argv, canonical, async (context) => context.engine.logLong());
+  freephite(argv, canonical, async (context) => context.engine.logLong());

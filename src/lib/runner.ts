@@ -29,32 +29,32 @@ import { TGlobalArguments } from './global_arguments';
 import { tracer } from './utils/tracer';
 import { CommandFailedError, CommandKilledError } from './git/runner';
 
-export async function graphite(
+export async function freephite(
   args: yargs.Arguments & TGlobalArguments,
   canonicalName: string,
   handler: (context: TContext) => Promise<void>
 ): Promise<void> {
-  return graphiteInternal(args, canonicalName, {
+  return freephiteInternal(args, canonicalName, {
     repo: true as const,
     run: handler,
   });
 }
 
-export async function graphiteWithoutRepo(
+export async function freephiteWithoutRepo(
   args: yargs.Arguments & TGlobalArguments,
   canonicalName: string,
   handler: (context: TContextLite) => Promise<void>
 ): Promise<void> {
-  return graphiteInternal(args, canonicalName, {
+  return freephiteInternal(args, canonicalName, {
     repo: false as const,
     run: handler,
   });
 }
 
-async function graphiteInternal(
+async function freephiteInternal(
   args: yargs.Arguments & TGlobalArguments,
   canonicalName: string,
-  handler: TGraphiteCommandHandler
+  handler: TFreephiteCommandHandler
 ): Promise<void> {
   const handlerMaybeWithCacheLock = handler.repo
     ? {
@@ -84,7 +84,7 @@ async function graphiteInternal(
         meta: {
           user: contextLite.userEmail ?? 'NotFound',
           version: version,
-          gtInteractive: process.env.GRAPHITE_INTERACTIVE ? 'true' : 'false',
+          gtInteractive: process.env.FREEPHITE_INTERACTIVE ? 'true' : 'false',
           processArgv: process.argv.join(' '),
         },
       },
@@ -96,7 +96,7 @@ async function graphiteInternal(
         }
 
         const context = initContext(contextLite, git, args);
-        return await graphiteHelper(
+        return await freephiteHelper(
           canonicalName,
           handlerMaybeWithCacheLock,
           context
@@ -104,7 +104,7 @@ async function graphiteInternal(
       }
     );
   } catch (err) {
-    handleGraphiteError(err, contextLite);
+    handleFreephiteError(err, contextLite);
     contextLite.splog.debug(err.stack);
     // print errors when debugging tests
     if (process.env.DEBUG) {
@@ -115,9 +115,9 @@ async function graphiteInternal(
 }
 
 // eslint-disable-next-line max-params
-async function graphiteHelper(
+async function freephiteHelper(
   canonicalName: string,
-  handler: TGraphiteCommandHandlerWithCacheLock,
+  handler: TFreephiteCommandHandlerWithCacheLock,
   context: TContext
 ): Promise<{
   cacheBefore: string;
@@ -130,10 +130,10 @@ async function graphiteHelper(
 
     if (
       canonicalName !== 'repo init' &&
-      !context.repoConfig.graphiteInitialized()
+      !context.repoConfig.freephiteInitialized()
     ) {
       context.splog.info(
-        `Graphite has not been initialized, attempting to setup now...`
+        `Freephite has not been initialized, attempting to setup now...`
       );
       context.splog.newline();
       await init({}, context);
@@ -155,7 +155,7 @@ async function graphiteHelper(
       context.engine.persist();
     } catch (persistError) {
       context.engine.clear();
-      context.splog.debug(`Failed to persist Graphite cache`);
+      context.splog.debug(`Failed to persist Freephite cache`);
     }
     handler.cacheLock.release();
   }
@@ -164,7 +164,7 @@ async function graphiteHelper(
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-function handleGraphiteError(err: any, context: TContextLite): void {
+function handleFreephiteError(err: any, context: TContextLite): void {
   switch (err.constructor) {
     case CommandKilledError:
     case KilledError: // the user doesn't need a message if they ended gt
@@ -185,13 +185,13 @@ function handleGraphiteError(err: any, context: TContextLite): void {
 }
 
 // typescript is fun!
-type TGraphiteCommandHandler =
+type TFreephiteCommandHandler =
   | { repo: true; run: (context: TContext) => Promise<void> }
   | {
       repo: false;
       run: (contextLite: TContextLite) => Promise<void>;
     };
-type TGraphiteCommandHandlerWithCacheLock = {
+type TFreephiteCommandHandlerWithCacheLock = {
   run: (context: TContext) => Promise<void>;
   cacheLock: TCacheLock;
 };

@@ -1,5 +1,5 @@
 import yargs from 'yargs';
-import { graphiteWithoutRepo } from '../../lib/runner';
+import { freephiteWithoutRepo } from '../../lib/runner';
 
 const args = {
   ['use-author-date']: {
@@ -21,7 +21,7 @@ export const description =
 export const canonical = 'user restack-date';
 export const builder = args;
 export const handler = async (argv: argsT): Promise<void> => {
-  return graphiteWithoutRepo(argv, canonical, async (context) => {
+  return freephiteWithoutRepo(argv, canonical, async (context) => {
     if (typeof argv['use-author-date'] === undefined) {
       context.splog.info(
         `\`--committer-date-is-author-date\` will ${

@@ -21,7 +21,7 @@ import { composeSplog, TSplog } from './utils/splog';
 import { NonInteractiveError } from './errors';
 import { gtPrompts, TPrompts } from './utils/prompts_helpers';
 
-export const USER_CONFIG_OVERRIDE_ENV = 'GRAPHITE_USER_CONFIG_PATH' as const;
+export const USER_CONFIG_OVERRIDE_ENV = 'FREEPHITE_USER_CONFIG_PATH' as const;
 
 export type TContextLite = {
   splog: TSplog;
@@ -57,7 +57,7 @@ export function initContextLite(opts?: {
 
   const interactive =
     // Confusing, but if invoked from GTI, behave as if `--no-interactive` was passed
-    !process.env.GRAPHITE_INTERACTIVE && (opts?.interactive ?? true);
+    !process.env.FREEPHITE_INTERACTIVE && (opts?.interactive ?? true);
 
   return {
     splog,

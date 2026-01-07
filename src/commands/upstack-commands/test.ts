@@ -1,7 +1,7 @@
 import yargs from 'yargs';
 import { testStack } from '../../actions/test';
 import { SCOPE } from '../../lib/engine/scope_spec';
-import { graphite } from '../../lib/runner';
+import { freephite } from '../../lib/runner';
 
 const args = {
   command: {
@@ -22,6 +22,6 @@ export const description =
   'For each of the current branch and its descendants, run the provided command and aggregate the results.';
 export const builder = args;
 export const handler = async (argv: argsT): Promise<void> =>
-  graphite(argv, canonical, async (context) =>
+  freephite(argv, canonical, async (context) =>
     testStack({ scope: SCOPE.UPSTACK, command: argv.command }, context)
   );

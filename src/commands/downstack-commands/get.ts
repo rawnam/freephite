@@ -1,6 +1,6 @@
 import yargs from 'yargs';
 import { getAction } from '../../actions/sync/get';
-import { graphite } from '../../lib/runner';
+import { freephite } from '../../lib/runner';
 
 const args = {
   branch: {
@@ -27,7 +27,7 @@ export const description =
 export const builder = args;
 export const aliases = ['g'];
 export const handler = async (argv: argsT): Promise<void> =>
-  graphite(
+  freephite(
     argv,
     canonical,
     async (context) =>

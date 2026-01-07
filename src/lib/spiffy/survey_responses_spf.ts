@@ -20,7 +20,7 @@ export const surveyConfigFactory = spiffy({
   schema: surveyConfigSchema,
   defaultLocations: [
     {
-      relativePath: '.graphite_beta_survey',
+      relativePath: '.freephite_beta_survey',
       relativeTo: 'USER_HOME',
     },
   ],

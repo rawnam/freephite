@@ -8,7 +8,7 @@ for (const scene of [new TrailingProdScene()]) {
     configureTest(this, scene);
 
     it('Can run repo init', () => {
-      const repoConfigPath = `${scene.repo.dir}/.git/.graphite_repo_config`;
+      const repoConfigPath = `${scene.repo.dir}/.git/.freephite_repo_config`;
       fs.removeSync(repoConfigPath);
       scene.repo.runCliCommand([`repo`, `init`, `--trunk`, `main`]);
       const savedConfig = JSON.parse(
@@ -18,7 +18,7 @@ for (const scene of [new TrailingProdScene()]) {
     });
 
     it('Falls back to main if non-existent branch is passed in', () => {
-      const repoConfigPath = `${scene.repo.dir}/.git/.graphite_repo_config`;
+      const repoConfigPath = `${scene.repo.dir}/.git/.freephite_repo_config`;
       scene.repo.runCliCommand([
         `repo`,
         `init`,

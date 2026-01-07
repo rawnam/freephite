@@ -1,5 +1,5 @@
 import yargs from 'yargs';
-import { graphiteWithoutRepo } from '../../lib/runner';
+import { freephiteWithoutRepo } from '../../lib/runner';
 
 const args = {
   ['include-commit-messages']: {
@@ -17,7 +17,7 @@ export const description = 'Options for default PR descriptions.';
 export const canonical = 'user submit-body';
 export const builder = args;
 export const handler = async (argv: argsT): Promise<void> => {
-  return graphiteWithoutRepo(argv, canonical, async (context) => {
+  return freephiteWithoutRepo(argv, canonical, async (context) => {
     if (argv['include-commit-messages'] === true) {
       context.userConfig.update(
         (data) => (data.submitIncludeCommitMessages = true)

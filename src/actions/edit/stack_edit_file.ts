@@ -2,7 +2,7 @@ import fs from 'fs-extra';
 import path from 'path';
 import { TContext } from '../../lib/context';
 
-const FILE_NAME = 'graphite_stack_edit';
+const FILE_NAME = 'freephite_stack_edit';
 const FILE_FOOTER = [
   '#',
   '# Stack will be rearranged on trunk to match the above order.',

@@ -9,7 +9,7 @@ export const cachePersistenceFactory = spiffy({
   }),
   defaultLocations: [
     {
-      relativePath: '.graphite_cache_persist',
+      relativePath: '.freephite_cache_persist',
       relativeTo: 'REPO',
     },
   ],

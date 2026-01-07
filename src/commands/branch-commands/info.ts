@@ -1,6 +1,6 @@
 import yargs from 'yargs';
 import { showBranchInfo } from '../../actions/show_branch';
-import { graphite } from '../../lib/runner';
+import { freephite } from '../../lib/runner';
 
 const args = {
   patch: {
@@ -33,7 +33,7 @@ export const aliases = ['i'];
 export const description = 'Display information about the current branch.';
 export const builder = args;
 export const handler = async (argv: argsT): Promise<void> => {
-  return graphite(argv, canonical, async (context) => {
+  return freephite(argv, canonical, async (context) => {
     await showBranchInfo(
       context.engine.currentBranchPrecondition,
       { patch: argv.patch, diff: argv.diff, body: argv.body },

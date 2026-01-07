@@ -1,5 +1,5 @@
 import yargs from 'yargs';
-import { graphiteWithoutRepo } from '../../lib/runner';
+import { freephiteWithoutRepo } from '../../lib/runner';
 
 const args = {
   enable: {
@@ -19,11 +19,11 @@ const args = {
 type argsT = yargs.Arguments<yargs.InferredOptionTypes<typeof args>>;
 
 export const command = 'tips';
-export const description = 'Show tips while using Graphite';
+export const description = 'Show tips while using Freephite';
 export const canonical = 'user tips';
 export const builder = args;
 export const handler = async (argv: argsT): Promise<void> => {
-  return graphiteWithoutRepo(argv, canonical, async (context) => {
+  return freephiteWithoutRepo(argv, canonical, async (context) => {
     if (argv.enable) {
       context.userConfig.update((data) => (data.tips = true));
       context.splog.info(`tips enabled`);

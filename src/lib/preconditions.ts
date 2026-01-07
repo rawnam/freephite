@@ -46,7 +46,7 @@ export function cliAuthPrecondition(context: TContext): string {
   const token = context.userConfig.getAuthToken();
   if (!token || token.length === 0) {
     throw new PreconditionsFailedError(
-      `Please authenticate your Graphite CLI by visiting ${context.userConfig.getAppServerUrl()}/activate`
+      `Please authenticate your Freephite CLI by visiting ${context.userConfig.getAppServerUrl()}/activate`
     );
   }
   return token;

@@ -1,6 +1,6 @@
 import yargs from 'yargs';
 import { logAction } from '../../actions/log';
-import { graphite } from '../../lib/runner';
+import { freephite } from '../../lib/runner';
 
 const args = {
   reverse: {
@@ -32,13 +32,13 @@ const args = {
 
 export const command = '*';
 export const description =
-  'Log all branches tracked by Graphite, showing dependencies and info for each.';
+  'Log all branches tracked by Freephite, showing dependencies and info for each.';
 export const builder = args;
 export const canonical = 'log';
 
 type argsT = yargs.Arguments<yargs.InferredOptionTypes<typeof args>>;
 export const handler = async (argv: argsT): Promise<void> =>
-  graphite(argv, canonical, async (context) =>
+  freephite(argv, canonical, async (context) =>
     logAction(
       {
         style: 'FULL',

@@ -13,7 +13,7 @@ type spanT = {
   name: spanNameT;
   parent_id?: number;
   resource: string;
-  service: 'graphite-cli';
+  service: 'freephite-cli';
   span_id: number;
   start: number;
   trace_id: number;
@@ -78,7 +78,7 @@ class Span {
       metrics: {},
       name: this.name,
       resource: this.resource,
-      service: 'graphite-cli',
+      service: 'freephite-cli',
       span_id: this.spanId,
       start: Math.round(this.start),
       trace_id: traceId,

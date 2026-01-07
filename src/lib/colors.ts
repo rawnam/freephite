@@ -1,6 +1,6 @@
 import chalk from 'chalk';
 
-export const GRAPHITE_COLORS: Parameters<typeof chalk.rgb>[] = [
+export const FREEPHITE_COLORS: Parameters<typeof chalk.rgb>[] = [
   [76, 203, 241],
   [77, 202, 125],
   [110, 173, 38],

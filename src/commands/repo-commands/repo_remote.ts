@@ -1,5 +1,5 @@
 import yargs from 'yargs';
-import { graphite } from '../../lib/runner';
+import { freephite } from '../../lib/runner';
 
 const args = {
   set: {
@@ -16,10 +16,10 @@ type argsT = yargs.Arguments<yargs.InferredOptionTypes<typeof args>>;
 export const command = 'remote';
 export const canonical = 'repo remote';
 export const description =
-  "Specifies the remote that graphite pushes to/pulls from (defaults to 'origin')";
+  "Specifies the remote that freephite pushes to/pulls from (defaults to 'origin')";
 export const builder = args;
 export const handler = async (argv: argsT): Promise<void> => {
-  return graphite(argv, canonical, async (context) => {
+  return freephite(argv, canonical, async (context) => {
     if (argv.set) {
       context.repoConfig.setRemote(argv.set);
     } else {

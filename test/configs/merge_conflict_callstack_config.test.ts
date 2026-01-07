@@ -14,7 +14,7 @@ for (const scene of [new BasicScene()]) {
       );
       // write an invalid config
       fs.writeFileSync(
-        `${scene.repo.dir}/.git/.graphite_merge_conflict`,
+        `${scene.repo.dir}/.git/.freephite_merge_conflict`,
         'abc'
       );
       // Should still not error

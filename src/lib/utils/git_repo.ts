@@ -14,7 +14,7 @@ export class GitRepo {
     opts?: { existingRepo?: boolean; repoUrl?: string }
   ) {
     this.dir = dir;
-    this.userConfigPath = path.join(dir, '.git/.graphite_user_config');
+    this.userConfigPath = path.join(dir, '.git/.freephite_user_config');
     if (opts?.existingRepo) {
       return;
     }
@@ -44,10 +44,10 @@ export class GitRepo {
         env: {
           ...process.env,
           [USER_CONFIG_OVERRIDE_ENV]: this.userConfigPath,
-          GRAPHITE_DISABLE_TELEMETRY: '1',
-          GRAPHITE_DISABLE_UPGRADE_PROMPT: '1',
-          GRAPHITE_DISABLE_SURVEY: '1',
-          GRAPHITE_PROFILE: undefined,
+          FREEPHITE_DISABLE_TELEMETRY: '1',
+          FREEPHITE_DISABLE_UPGRADE_PROMPT: '1',
+          FREEPHITE_DISABLE_SURVEY: '1',
+          FREEPHITE_PROFILE: undefined,
         },
       }
     );
@@ -96,8 +96,8 @@ export class GitRepo {
           env: {
             ...process.env,
             [USER_CONFIG_OVERRIDE_ENV]: this.userConfigPath,
-            GRAPHITE_DISABLE_TELEMETRY: '1',
-            GRAPHITE_DISABLE_UPGRADE_PROMPT: '1',
+            FREEPHITE_DISABLE_TELEMETRY: '1',
+            FREEPHITE_DISABLE_UPGRADE_PROMPT: '1',
           },
         }
       ).stdout?.trim() ?? ''

@@ -1,6 +1,6 @@
 import open from 'open';
 import yargs from 'yargs';
-import { graphite } from '../../lib/runner';
+import { freephite } from '../../lib/runner';
 
 const args = {
   pr: {
@@ -22,7 +22,7 @@ export const aliases = ['p'];
 type argsT = yargs.Arguments<yargs.InferredOptionTypes<typeof args>>;
 
 export const handler = async (argv: argsT): Promise<void> =>
-  graphite(argv, canonical, async (context) => {
+  freephite(argv, canonical, async (context) => {
     const dashboardUrl = context.userConfig.getAppServerUrl();
     const prPath = `${dashboardUrl}/github/pr/`;
 

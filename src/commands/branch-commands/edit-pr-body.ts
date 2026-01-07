@@ -2,7 +2,7 @@ import yargs from 'yargs';
 import chalk from 'chalk';
 import { editPRBody } from '../../actions/submit/pr_body';
 import { submitPullRequest } from '../../actions/submit/submit_prs';
-import { graphite } from '../../lib/runner';
+import { freephite } from '../../lib/runner';
 import { ExitFailedError } from '../../lib/errors';
 
 const args = {
@@ -25,7 +25,7 @@ export const aliases = ['epb'];
 type argsT = yargs.Arguments<yargs.InferredOptionTypes<typeof args>>;
 
 export const handler = async (argv: argsT): Promise<void> =>
-  graphite(argv, canonical, async (context) => {
+  freephite(argv, canonical, async (context) => {
     const branchName = argv.branch || context.engine.currentBranch;
 
     if (!branchName) {

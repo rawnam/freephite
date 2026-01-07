@@ -89,7 +89,7 @@ export function recreateState(stateJson: string, splog: TSplog): string {
 
   splog.info(`Creating the repo config`);
   fs.writeFileSync(
-    path.join(tmpDir, '/.git/.graphite_repo_config'),
+    path.join(tmpDir, '/.git/.freephite_repo_config'),
     cuteString(state.repoConfig)
   );
 

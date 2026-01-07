@@ -2,7 +2,7 @@ import * as t from '@withgraphite/retype';
 import { spiffy } from './spiffy';
 
 /**
- * After Graphite is interrupted by a merge conflict, upon continuing, there
+ * After Freephite is interrupted by a merge conflict, upon continuing, there
  * are 3 main things we need to do, in the following order.
  *
  * 1) Complete the original rebase operation.
@@ -10,7 +10,7 @@ import { spiffy } from './spiffy';
  * 3) Restack any remaining branches that were queued.
  *
  * The below object persists the queue of branches to be restacked.
- * We also store the Graphite current branch, so that we can switch back to it.
+ * We also store the Freephite current branch, so that we can switch back to it.
  * We need to keep track of the new parentBranchRevision for the branch that
  * hit a merge conflict, as we cannot pull this information from Git.
  */

@@ -1,12 +1,12 @@
 import chalk from 'chalk';
 import yargs from 'yargs';
-import { graphiteWithoutRepo } from '../lib/runner';
+import { freephiteWithoutRepo } from '../lib/runner';
 
 const args = {
   token: {
     type: 'string',
     alias: 't',
-    describe: 'Auth token. Get it from: https://app.graphite.dev/activate',
+    describe: 'Auth token. Get it from: https://app.freephite.dev/activate',
     demandOption: false,
   },
 } as const;
@@ -14,12 +14,12 @@ type argsT = yargs.Arguments<yargs.InferredOptionTypes<typeof args>>;
 
 export const command = 'auth';
 export const description =
-  'Add your auth token to enable Graphite CLI to create and update your PRs on GitHub.';
+  'Add your auth token to enable Freephite CLI to create and update your PRs on GitHub.';
 export const builder = args;
 export const canonical = 'auth';
 
 export const handler = async (argv: argsT): Promise<void> => {
-  return graphiteWithoutRepo(argv, canonical, async (context) => {
+  return freephiteWithoutRepo(argv, canonical, async (context) => {
     if (argv.token) {
       context.userConfig.update((data) => (data.authToken = argv.token));
       context.splog.info(

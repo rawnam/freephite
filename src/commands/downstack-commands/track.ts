@@ -1,6 +1,6 @@
 import yargs from 'yargs';
 import { trackStack } from '../../actions/track_branch';
-import { graphite } from '../../lib/runner';
+import { freephite } from '../../lib/runner';
 
 const args = {
   branch: {
@@ -27,7 +27,7 @@ export const description =
   "Track a series of untracked branches, by specifying each's parent. Starts at the current (or provided) branch and stops when you reach a tracked branch.";
 export const builder = args;
 export const handler = async (argv: argsT): Promise<void> =>
-  graphite(
+  freephite(
     argv,
     canonical,
     async (context) =>
