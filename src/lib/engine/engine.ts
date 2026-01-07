@@ -499,7 +499,7 @@ export function composeEngine({
             validationResult: 'INVALID_PARENT',
           };
         }
-        childrenToUntrack.concat(childCachedMeta.children);
+        childrenToUntrack.push(...childCachedMeta.children);
       }
     },
     get currentBranch() {

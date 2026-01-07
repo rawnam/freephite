@@ -96,7 +96,11 @@ jobs:
         run: bun install --frozen-lockfile
 
       - name: Build
-        run: bun run build
+        run: |
+          bunx tsc --skipLibCheck
+          mkdir -p dist/scripts
+          cp scripts/node_version.js dist/scripts/node_version.js
+          cp src/lib/gt.fish dist/src/lib/gt.fish
 
       - name: Publish to npm
         run: npm publish --access public
