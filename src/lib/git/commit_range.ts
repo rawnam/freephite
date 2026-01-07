@@ -31,9 +31,7 @@ export function getCommitRange(
 ): string[] {
   const isMultiline = MULTILINE_FORMATS.includes(format);
   // Use %x00 in the format string - git interprets this as a NUL byte in output
-  const formatStr = isMultiline
-    ? `${FORMAT[format]}%x00`
-    : FORMAT[format];
+  const formatStr = isMultiline ? `${FORMAT[format]}%x00` : FORMAT[format];
 
   if (isMultiline) {
     // For multi-line formats, use record separator and split manually
@@ -79,9 +77,7 @@ export async function getCommitRangeAsync(
 ): Promise<string[]> {
   const isMultiline = MULTILINE_FORMATS.includes(format);
   // Use %x00 in the format string - git interprets this as a NUL byte in output
-  const formatStr = isMultiline
-    ? `${FORMAT[format]}%x00`
-    : FORMAT[format];
+  const formatStr = isMultiline ? `${FORMAT[format]}%x00` : FORMAT[format];
 
   if (isMultiline) {
     // For multi-line formats, use record separator and split manually
